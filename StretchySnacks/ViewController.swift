@@ -25,9 +25,16 @@ class ViewController: UIViewController {
   
   private var snackArray = [String]()
   
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    setupNavbarViews()
+    
+
+  }
+
+  fileprivate func setupNavbarViews() {
     // setup the stack view images
     imageView1 = UIImageView(image: UIImage(named: "oreos"))
     imageView1.frame = CGRect(x: 0, y: 0, width: navBarView.frame.width / 5, height: 150)
@@ -71,14 +78,8 @@ class ViewController: UIViewController {
     snackBarLabel.text = "SNACKS"
     snackBarLabel.textAlignment = .center
     navBarView.addSubview(snackBarLabel)
-    
-
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+  
 
   @IBAction func addButtonPressed(_ sender: Any) {
     print("plus button pressed")
@@ -106,17 +107,17 @@ class ViewController: UIViewController {
   @objc func addFoodItem(_ sender: UITapGestureRecognizer)
   {
     switch sender.view {
-    case imageView1:
-      snackArray.append("Oreos")
-    case imageView2:
-      snackArray.append("Pizza Pockets")
-    case imageView3:
-      snackArray.append("Pop Tarts")
-    case imageView4:
-      snackArray.append("Popsicle")
-    default:
-      snackArray.append("Ramen")
-    }
+      case imageView1:
+        snackArray.append("Oreos")
+      case imageView2:
+        snackArray.append("Pizza Pockets")
+      case imageView3:
+        snackArray.append("Pop Tarts")
+      case imageView4:
+        snackArray.append("Popsicle")
+      default:
+        snackArray.append("Ramen")
+      }
     
     snackTableView.insertRows(at: [IndexPath(row: snackArray.count-1, section: 0)], with: .automatic)
   }
