@@ -84,16 +84,15 @@ class ViewController: UIViewController {
   @IBAction func addButtonPressed(_ sender: Any) {
     print("plus button pressed")
     
+    let button = sender as! UIButton
+    
+    button.isSelected = !button.isSelected
+    let newHeight:CGFloat = button.isSelected ? 200.0 : 66.0
+    let labelText = button.isSelected ? "Add a snack" : "SNACKS"
+    
     UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
-      if self.navBarShown{
-          //hide the nav bar
-          self.navBarHeightConstraint.constant = 66
-          self.snackBarLabel.text = "SNACKS"
-      }
-      else{
-          self.navBarHeightConstraint.constant = 200
-          self.snackBarLabel.text = "Add a snack"
-      }
+      self.navBarHeightConstraint.constant = newHeight
+      self.snackBarLabel.text = labelText
       
       self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/4))
       self.navBarShown = !self.navBarShown
