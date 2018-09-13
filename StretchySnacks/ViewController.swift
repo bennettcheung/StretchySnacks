@@ -87,15 +87,14 @@ class ViewController: UIViewController {
       if self.navBarShown{
           //hide the nav bar
           self.navBarHeightConstraint.constant = 66
-          self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/2))
           self.snackBarLabel.text = "SNACKS"
       }
       else{
           self.navBarHeightConstraint.constant = 200
-          self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/2))
           self.snackBarLabel.text = "Add a snack"
       }
       
+      self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/4))
       self.navBarShown = !self.navBarShown
       self.stackView.isHidden = !self.navBarShown
       self.view.layoutIfNeeded()

@@ -22,8 +22,9 @@
                                 <rect key="frame" x="0.0" y="40" width="375" height="66"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdY-er-PTb">
-                                        <rect key="frame" x="345" y="8" width="30" height="30"/>
+                                        <rect key="frame" x="345" y="5" width="34" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="➕"/>
                                         <connections>
                                             <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ytc-gR-eVf"/>
