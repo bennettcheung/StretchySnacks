@@ -17,6 +17,7 @@ class ViewController: UIViewController {
   var imageView3: UIImageView!
   var imageView4: UIImageView!
   var imageView5: UIImageView!
+  var snackBarLabel: UILabel!
   @IBOutlet weak var snackTableView: UITableView!
   @IBOutlet weak var navBarHeightConstraint: NSLayoutConstraint!
   
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view, typically from a nib.
+    // setup the stack view images
     imageView1 = UIImageView(image: UIImage(named: "oreos"))
     imageView1.frame = CGRect(x: 0, y: 0, width: navBarView.frame.width / 5, height: 150)
     imageView1.isUserInteractionEnabled = true
@@ -63,9 +64,15 @@ class ViewController: UIViewController {
     stackView.addArrangedSubview(imageView3)
     stackView.addArrangedSubview(imageView4)
     stackView.addArrangedSubview(imageView5)
-
-    navBarView.addSubview(stackView)
     stackView.isHidden = true
+    navBarView.addSubview(stackView)
+    
+    snackBarLabel = UILabel(frame: CGRect(x: self.view.frame.width / 2 - 50, y: 20, width: 100, height: 20))
+    snackBarLabel.text = "SNACKS"
+    snackBarLabel.textAlignment = .center
+    navBarView.addSubview(snackBarLabel)
+    
+
   }
 
   override func didReceiveMemoryWarning() {
@@ -76,21 +83,22 @@ class ViewController: UIViewController {
   @IBAction func addButtonPressed(_ sender: Any) {
     print("plus button pressed")
     
-    UIView.animate(withDuration: 5, delay: 0.5, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+    UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
       if self.navBarShown{
-        
+          //hide the nav bar
           self.navBarHeightConstraint.constant = 66
-          self.addButton.transform.rotated(by: -90)
+          self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/2))
+          self.snackBarLabel.text = "SNACKS"
       }
       else{
           self.navBarHeightConstraint.constant = 200
-          self.addButton.transform.rotated(by: 90)
-
+          self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/2))
+          self.snackBarLabel.text = "Add a snack"
       }
       
       self.navBarShown = !self.navBarShown
       self.stackView.isHidden = !self.navBarShown
-      self.navBarView.layoutIfNeeded()
+      self.view.layoutIfNeeded()
     }, completion: nil)
 
     
@@ -98,7 +106,6 @@ class ViewController: UIViewController {
   
   @objc func addFoodItem(_ sender: UITapGestureRecognizer)
   {
-    print("Tapped on Image /(sender)")
     switch sender.view {
     case imageView1:
       snackArray.append("Oreos")
