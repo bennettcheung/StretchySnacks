@@ -17,10 +17,12 @@ class ViewController: UIViewController {
   var imageView3: UIImageView!
   var imageView4: UIImageView!
   var imageView5: UIImageView!
-  var snackBarLabel: UILabel!
+
+  @IBOutlet weak var snackbarLabel: UILabel!
   @IBOutlet weak var snackTableView: UITableView!
   @IBOutlet weak var navBarHeightConstraint: NSLayoutConstraint!
   
+  @IBOutlet weak var snackLabelCenterYConstraint: NSLayoutConstraint!
   private var navBarShown = false
   
   private var snackArray = [String]()
@@ -74,10 +76,6 @@ class ViewController: UIViewController {
     stackView.isHidden = true
     navBarView.addSubview(stackView)
     
-    snackBarLabel = UILabel(frame: CGRect(x: self.view.frame.width / 2 - 50, y: 20, width: 100, height: 20))
-    snackBarLabel.text = "SNACKS"
-    snackBarLabel.textAlignment = .center
-    navBarView.addSubview(snackBarLabel)
   }
   
 
@@ -89,10 +87,11 @@ class ViewController: UIViewController {
     button.isSelected = !button.isSelected
     let newHeight:CGFloat = button.isSelected ? 200.0 : 66.0
     let labelText = button.isSelected ? "Add a snack" : "SNACKS"
+    snackLabelCenterYConstraint.constant = button.isSelected ? -70 : 0
     
     UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
       self.navBarHeightConstraint.constant = newHeight
-      self.snackBarLabel.text = labelText
+      self.snackbarLabel.text = labelText
       
       self.addButton.transform = self.addButton.transform.rotated(by: CGFloat(Float.pi/4))
       self.navBarShown = !self.navBarShown

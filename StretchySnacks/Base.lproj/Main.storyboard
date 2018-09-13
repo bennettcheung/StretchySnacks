@@ -32,10 +32,18 @@
                                             <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ytc-gR-eVf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SNACKS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEt-1B-8OO">
+                                        <rect key="frame" x="154.5" y="23" width="66" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="lEt-1B-8OO" firstAttribute="centerY" secondItem="f5x-0P-Kcq" secondAttribute="centerY" id="CVl-Ti-BlN"/>
                                     <constraint firstAttribute="height" constant="66" id="Rac-GW-Bia"/>
+                                    <constraint firstItem="lEt-1B-8OO" firstAttribute="centerX" secondItem="f5x-0P-Kcq" secondAttribute="centerX" identifier="snackCenterYConstraint" id="ess-1b-pXD"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BQa-1D-JGr">
@@ -80,9 +88,11 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="HdY-er-PTb" id="2kh-8F-7wr"/>
-                        <outlet property="navBarHeightConstraint" destination="Rac-GW-Bia" id="sPt-fL-Y1O"/>
+                        <outlet property="navBarHeightConstraint" destination="Rac-GW-Bia" id="WIa-Ni-DEp"/>
                         <outlet property="navBarView" destination="f5x-0P-Kcq" id="2Ma-La-Tt1"/>
+                        <outlet property="snackLabelCenterYConstraint" destination="CVl-Ti-BlN" id="G6s-cH-PIs"/>
                         <outlet property="snackTableView" destination="BQa-1D-JGr" id="gk4-0r-uj7"/>
+                        <outlet property="snackbarLabel" destination="lEt-1B-8OO" id="Puc-Ai-FDs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
